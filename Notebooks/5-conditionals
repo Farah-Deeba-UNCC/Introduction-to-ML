@@ -105,8 +105,11 @@
       },
       "outputs": [],
       "source": [
-        "purchasePrice = float(input(\"Price at which you have purchased a stock: \"))\n",
-        "currentPrice = float(input(\"current price of the stock: \"))\n",
+        "#purchasePrice = float(input(\"Price at which you have purchased a stock: \"))\n",
+        "#currentPrice = float(input(\"current price of the stock: \"))\n",
+        "\n",
+        "purchasePrice = 25.55\n",
+        "currentPrice = 23\n",
         "\n",
         "if currentPrice < purchasePrice:\n",
         "  print(\"Not a good idea to sell your stock now.\")\n",
