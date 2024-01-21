@@ -1,0 +1,881 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "WM8XZHow_wji"
+      },
+      "source": [
+        "# Lists and tuples\n",
+        "\n",
+        "<hr>"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "6S4KcFW5_wjl"
+      },
+      "source": [
+        "We often want to group things together. For example, we may want to group all of the results some a control experiment and the results from a test experiment. As we will see in future lessons, data frames are very good for that kind of grouping. They are more complex objects, and it helps to have an understanding of Python's native data types for holding collections of data.\n",
+        "\n",
+        "In this lesson, we first will explore two important data types in Python, **lists** and **tuples**. They are both **sequences** of objects. Just like a string is a sequence (that is, an ordered collection) of characters, lists and tuples are sequences of arbitrary objects, called **items** or **elements**. They are a way to make a single object that contains many other objects."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "qRzYy2bC_wjm"
+      },
+      "source": [
+        "## Lists\n",
+        "\n",
+        "As usual, it is easiest to explore new topics by example. We'll start by creating a list."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "tags": [],
+        "id": "thykrtQ9_wjn"
+      },
+      "source": [
+        "### List creation\n",
+        "\n",
+        "We create lists by putting Python values or expressions inside square brackets, separated by commas. For example:"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 2,
+      "metadata": {
+        "scrolled": true,
+        "id": "-rmEoMbw_wjn",
+        "outputId": "1d7e4173-47ee-4df2-e692-fe4b9c855d34",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "<class 'list'>\n",
+            "['apple', 'banana', 'orange', 'tomato']\n"
+          ]
+        }
+      ],
+      "source": [
+        "fruits = [\"apple\", \"banana\", \"orange\", \"tomato\"]  # a list of strings\n",
+        "print(type(fruits))\n",
+        "print(fruits)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "VjCMGx76_wjp"
+      },
+      "source": [
+        "We observe here that although the elements of the list are `string`s, the type of the list is `list`. Actually, any Python expression can be inside a list (including another list!):"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "RuMEWbZe_wjt"
+      },
+      "source": [
+        "### List operators\n",
+        "\n",
+        "Operators on lists behave much like operators on strings. The **`+`** operator on lists means list concatenation."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "UN2wDwpi_wjt",
+        "outputId": "79e81cbc-9e82-4e3b-c0da-943b3b09fac3"
+      },
+      "outputs": [
+        {
+          "data": {
+            "text/plain": [
+              "[1, 2, 3, 4, 5, 6]"
+            ]
+          },
+          "execution_count": 6,
+          "metadata": {},
+          "output_type": "execute_result"
+        }
+      ],
+      "source": [
+        "[1, 2, 3] + [4, 5, 6]"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "03BTUEVw_wju"
+      },
+      "source": [
+        "The `*` operator on lists means list replication and concatenation."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "ZE5kuTmA_wju",
+        "outputId": "b9026f82-9e06-4187-b597-63eb2ea2f8c3"
+      },
+      "outputs": [
+        {
+          "data": {
+            "text/plain": [
+              "[1, 2, 3, 1, 2, 3, 1, 2, 3]"
+            ]
+          },
+          "execution_count": 7,
+          "metadata": {},
+          "output_type": "execute_result"
+        }
+      ],
+      "source": [
+        "[1, 2, 3] * 3"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "jT7I8OLk_wju"
+      },
+      "source": [
+        "### Membership operators\n",
+        "\n",
+        "Membership operators are used to determine if an item is in a list. The two membership operators are:\n",
+        "\n",
+        "|English|operator|\n",
+        "|:-------|:----------:|\n",
+        "|is a member of | `in`|\n",
+        "|is not a member of | `not in`|\n",
+        "\n",
+        "<br />\n",
+        "\n",
+        "The result of the operator is `True` or `False`. Let's look at `fruits`:"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 3,
+      "metadata": {
+        "scrolled": true,
+        "id": "dewmO-ys_wjv",
+        "outputId": "d57528ec-b4b3-4f9e-9a1e-f66d414123bd",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "True"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 3
+        }
+      ],
+      "source": [
+        "\n",
+        "\"tomato\" in fruits"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 4,
+      "metadata": {
+        "scrolled": true,
+        "id": "hMG_Iql0_wjv",
+        "outputId": "91065110-1838-465e-8917-4ee916519e4a",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "False"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 4
+        }
+      ],
+      "source": [
+        "\"broccoli\" in fruits"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "9Zr49vii_wjx"
+      },
+      "source": [
+        "### List indexing\n",
+        "\n",
+        "Imagine that we would like to access an item in a list.  Because a list is ordered, we can ask for the first item, the second item, the *n*th item, the last item, etc.  This is done using a bracket notation. We first write the name of our list and then enclosed in square brackets we write the location (index) of the desired element:"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 6,
+      "metadata": {
+        "scrolled": true,
+        "id": "uBOJEiyr_wjy",
+        "outputId": "979a15c3-66a5-4063-849f-3d705e65c2e8",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 35
+        }
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "'banana'"
+            ],
+            "application/vnd.google.colaboratory.intrinsic+json": {
+              "type": "string"
+            }
+          },
+          "metadata": {},
+          "execution_count": 6
+        }
+      ],
+      "source": [
+        "fruits[1]"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "nxSrLIwP_wjy"
+      },
+      "source": [
+        "Wait a minute! Shouldn't `my_list[1]` give the first item in the list? It seems to give the second. This is because **indexing in Python starts at zero**. This is very important.\n",
+        "\n",
+        "<div class=\"alert alert-info\">\n",
+        "\n",
+        "<center>Note: Python uses zero-based indexing.</center>\n",
+        "\n",
+        "</div>\n",
+        "\n",
+        "Now that we know that, let's look at the items in the list."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 7,
+      "metadata": {
+        "scrolled": true,
+        "id": "2GQ8BTsO_wj1",
+        "outputId": "5d214e0a-456c-4878-ae2f-53dc0af399e4",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "apple\n",
+            "banana\n",
+            "orange\n",
+            "tomato\n"
+          ]
+        }
+      ],
+      "source": [
+        "print(fruits[0])\n",
+        "print(fruits[1])\n",
+        "print(fruits[2])\n",
+        "print(fruits[3])"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "o_E1cLQ-_wj2"
+      },
+      "source": [
+        "We can use negative indexing as well! This just means we start indexing from the last entry, starting at `-1`."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 8,
+      "metadata": {
+        "scrolled": true,
+        "id": "s8vKDMxd_wj2",
+        "outputId": "4a26034c-5901-445f-ea30-d934fd3d8724",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 35
+        }
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "'tomato'"
+            ],
+            "application/vnd.google.colaboratory.intrinsic+json": {
+              "type": "string"
+            }
+          },
+          "metadata": {},
+          "execution_count": 8
+        }
+      ],
+      "source": [
+        "fruits[-1]"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 9,
+      "metadata": {
+        "scrolled": true,
+        "id": "r0Yue4W0_wj2",
+        "outputId": "584aa3a4-a143-4d2e-cc66-66684dd1c4e2",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 35
+        }
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "'banana'"
+            ],
+            "application/vnd.google.colaboratory.intrinsic+json": {
+              "type": "string"
+            }
+          },
+          "metadata": {},
+          "execution_count": 9
+        }
+      ],
+      "source": [
+        "fruits[-3]"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "U6m-8DAm_wj2"
+      },
+      "source": [
+        "This is very convenient for indexing in reverse. Now make it more clear, here are the forward and backward indices for the list:\n",
+        "\n",
+        "|Values|0|1|2|3|4|5|6|7|8|9|10|\n",
+        "|------|-:|-:|-:|-:|-:|-:|-:|-:|-:|-:|-:|\n",
+        "|Forward indices|0|1|2|3|4|5|6|7|8|9|10|\n",
+        "|Reverse indices|-11|-10|-9|-8|-7|-6|-5|-4|-3|-2|-1|\n",
+        "\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "Ap_XHNCu_wj2"
+      },
+      "source": [
+        "### List slicing\n",
+        "\n",
+        "Now, what if we want to pull out multiple items in a list, called **slicing**?  We can use colons (`:`) for that."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 15,
+      "metadata": {
+        "scrolled": true,
+        "id": "9nhkzEk3_wj3",
+        "outputId": "359d8389-cb92-48e1-f887-321419db3af7",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]\n",
+            "[3, 4, 5]\n",
+            "[2, 4, 6, 8, 10]\n",
+            "[10, 9, 8, 7, 6, 5, 4, 3, 2, 1]\n"
+          ]
+        }
+      ],
+      "source": [
+        "numbers = [1, 2 , 3, 4, 5, 6, 7, 8, 9, 10]\n",
+        "print(numbers)\n",
+        "print(numbers[2:5])\n",
+        "print(numbers[1:10:2])"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "hnC0FMSo_wj_"
+      },
+      "source": [
+        " When using the colon indexing, `my_list[i:j]`, we get items `i` through `j-1`.  I.e., the range is **inclusive of the first index and exclusive of the last**. If the slice's final index is larger than the length of the sequence, the slice ends at the last element."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "546hr57Z_wkA"
+      },
+      "source": [
+        "Now, we can also use negative indices with colons."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 16,
+      "metadata": {
+        "scrolled": true,
+        "id": "0egIpc-z_wkA",
+        "outputId": "f5bbeda0-52f4-43ae-94ee-ea7bf49c8acc",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "[1, 2, 3, 4, 5, 6, 7]"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 16
+        }
+      ],
+      "source": [
+        "numbers[0:-3]"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "EEWmr6Ki_wkA"
+      },
+      "source": [
+        "We can also specify a **stride**. The stride comes after a second colon. For example, if we only wanted the even numbers, we could do the following."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 22,
+      "metadata": {
+        "scrolled": true,
+        "id": "BtuqoLSE_wkB",
+        "outputId": "41def819-3a83-4877-f596-9ed5982be7cb",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "[1, 3, 5, 7, 9]"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 22
+        }
+      ],
+      "source": [
+        "numbers[0::2]"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "0MZGeOnV_wkB"
+      },
+      "source": [
+        "Notice that we did not enter anything for the `end` value of the slice. If the end is left blank, the default is to include the entire string. Similarly, we can leave out the start index, as its default is zero."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 23,
+      "metadata": {
+        "scrolled": true,
+        "id": "ZO8kCR0z_wkB",
+        "outputId": "4e6775e0-a78c-4772-cde0-142bf542f0fb",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "[1, 3, 5, 7, 9]"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 23
+        }
+      ],
+      "source": [
+        "numbers[::2]"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "tVZkTaKk_wkB"
+      },
+      "source": [
+        "So, in general, the indexing scheme is:\n",
+        "\n",
+        "        numbers[start:end:stride]\n",
+        "\n",
+        "* If there are no colons, a single element is returned.\n",
+        "* If there are any colons, we are slicing the list, and a list is returned.\n",
+        "* If there is one colon, `stride` is assumed to be 1.\n",
+        "* If `start` is not specified, it is assumed to be zero.\n",
+        "* If `end` is not specified, the interpreted assumed you want the entire list.\n",
+        "* If `stride` is not specified, it is assumed to be 1.\n",
+        "\n",
+        "With this in hand, we can do lots of crazy slicing. We can even use a negative stride, which results in reversing the list."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 24,
+      "metadata": {
+        "scrolled": true,
+        "id": "6GKJdrdf_wkC",
+        "outputId": "32f33467-6960-4beb-f4c3-350fcdd533bb",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "[10, 9, 8, 7, 6, 5, 4, 3, 2, 1]"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 24
+        }
+      ],
+      "source": [
+        "numbers[::-1]"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "_e8mRH0O_wkD"
+      },
+      "source": [
+        "## Mutability\n",
+        "\n",
+        "Lists are **mutable**. That means that you can change their values without creating a new list. (You cannot change the data type or identity.) Let's see this by example."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "scrolled": true,
+        "id": "l1SunJnW_wkD",
+        "outputId": "2f5fa43b-be35-4355-ab94-45c7b042d460"
+      },
+      "outputs": [
+        {
+          "data": {
+            "text/plain": [
+              "[1, 2, 3, 'four', 5, 6, 7, 8, 9, 10]"
+            ]
+          },
+          "execution_count": 28,
+          "metadata": {},
+          "output_type": "execute_result"
+        }
+      ],
+      "source": [
+        "my_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]\n",
+        "my_list[3] = 'four'\n",
+        "\n",
+        "my_list"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "_nSqZ9a6_wkE"
+      },
+      "source": [
+        "The other data types we have encountered so far, `int`s, `float`s, and `str`s, are **immutable**. You cannot change their values without reassigning them. To see this, we'll use the `id()` function, which tells us where in memory that the variable is stored. (Note: this identity is unique to the Python interpreter, and should not be considered an actual physical address in memory.)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "scrolled": true,
+        "id": "cr9qkNjS_wkE",
+        "outputId": "a7e1b10a-e612-4988-cb26-7c3a85c6295b"
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": [
+            "140319551265232\n",
+            "140319551265264\n"
+          ]
+        }
+      ],
+      "source": [
+        "a = 6\n",
+        "print(id(a))\n",
+        "\n",
+        "a = 7\n",
+        "print(id(a))"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "A02TRKZy_wkE"
+      },
+      "source": [
+        "So, we see that the identity of `a`, an integer, changed when we tried to change its value. So, we didn't actually change its value; we made a new variable. With lists, though, this is not the case."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "scrolled": true,
+        "id": "p1nYailk_wkE",
+        "outputId": "f4b49171-d7ee-4b91-b8e4-86c775992eea"
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": [
+            "140319623302272\n",
+            "140319623302272\n"
+          ]
+        }
+      ],
+      "source": [
+        "print(id(my_list))\n",
+        "\n",
+        "my_list[0] = 'zero'\n",
+        "print(id(my_list))"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "yZ6CMgEM_wkF"
+      },
+      "source": [
+        "It is still the same list! This is _very_ important to consider when we do assignments.  "
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "T9zPpOg8_wkH"
+      },
+      "source": [
+        "If we want to avoid issues associated with the change in value, an option is to use a data type that is very much like a list, except it is immutable."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "mn2j8243_wkH"
+      },
+      "source": [
+        "## Tuples\n",
+        "\n",
+        "A **tuple** is like a list, except it is immutable (basically a read-only list). Tuples do have many other capabilities beyond what you would expect from just bring \"a read-only list,\" but for us just beginning now, we can think of it that way.)  A tuple is created just like a list, except we use parentheses instead of brackets. The only watch-out is that a tuple with a single item needs to include a comma after the item."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "scrolled": true,
+        "id": "v4wxpS1G_wkI",
+        "outputId": "5b032fcf-b834-4f67-a372-fe42a7b17163"
+      },
+      "outputs": [
+        {
+          "data": {
+            "text/plain": [
+              "(tuple, int)"
+            ]
+          },
+          "execution_count": 35,
+          "metadata": {},
+          "output_type": "execute_result"
+        }
+      ],
+      "source": [
+        "my_tuple = (0,)\n",
+        "\n",
+        "not_a_tuple = (0) # this is just the number 0 (normal use of parantheses)\n",
+        "\n",
+        "type(my_tuple), type(not_a_tuple)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "VBl0oYm4_wkL"
+      },
+      "source": [
+        "### Slicing of tuples\n",
+        "Slicing of tuples is the same as lists, except a tuple is returned from the slicing operation, not a list."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "scrolled": true,
+        "id": "bGJIyKCd_wkL",
+        "outputId": "722e4ab8-5308-4d0b-c607-f0885ed1c841"
+      },
+      "outputs": [
+        {
+          "data": {
+            "text/plain": [
+              "(10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0)"
+            ]
+          },
+          "execution_count": 40,
+          "metadata": {},
+          "output_type": "execute_result"
+        }
+      ],
+      "source": [
+        "my_tuple = (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10)\n",
+        "\n",
+        "# Reverse\n",
+        "my_tuple[::-1]"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "scrolled": true,
+        "id": "So9LU_op_wkM",
+        "outputId": "b7d0cad3-cd58-4188-8b25-210d4d9a1985"
+      },
+      "outputs": [
+        {
+          "data": {
+            "text/plain": [
+              "(1, 3, 5, 7, 9)"
+            ]
+          },
+          "execution_count": 41,
+          "metadata": {},
+          "output_type": "execute_result"
+        }
+      ],
+      "source": [
+        "# Odd numbers\n",
+        "my_tuple[1::2]"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "Bga9aJpP_wkQ"
+      },
+      "source": [
+        "## tuples or lists?\n",
+        "\n",
+        "At face, tuples and lists are very similar, differing essentially only in mutability. The differences are actually more profound, as described in the [aforementioned blog post](http://www.asmeurer.com/blog/posts/tuples/). We will make extensive use of them in our programs.  \n",
+        "\n",
+        "\"When should I use a tuple and when should I use a list?\" you ask. Here is my advice.\n",
+        "\n",
+        "<div class=\"alert alert-info\">\n",
+        "\n",
+        "Always use tuples instead of lists unless you need mutability.\n",
+        "\n",
+        "</div>\n",
+        "\n",
+        "This keeps you out of trouble. It is very easy to inadvertently change one list, and then another list (that is actually the same, but with a different variable name) gets mangled. That said, mutability is often very useful, so you can use it to make your list and adjust it as you need. However, after you have finalized your list, you should convert it to a tuple so it cannot get mangled.\n",
+        "\n",
+        "So, I ask you, which is better?"
+      ]
+    }
+  ],
+  "metadata": {
+    "anaconda-cloud": {},
+    "kernelspec": {
+      "display_name": "Python 3 (ipykernel)",
+      "language": "python",
+      "name": "python3"
+    },
+    "language_info": {
+      "codemirror_mode": {
+        "name": "ipython",
+        "version": 3
+      },
+      "file_extension": ".py",
+      "mimetype": "text/x-python",
+      "name": "python",
+      "nbconvert_exporter": "python",
+      "pygments_lexer": "ipython3",
+      "version": "3.9.12"
+    },
+    "colab": {
+      "provenance": []
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}
